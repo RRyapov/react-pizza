@@ -9,12 +9,13 @@ function SortPopup() {
   const sortRef = useRef();
 
   const handleOutsideClick = (e) => {
-    console.log(e);
+    if (!sortRef.current.contains(e.target)) {
+      setVisiblePopup(false);
+    }
   };
 
   useEffect(() => {
     document.body.addEventListener("click", handleOutsideClick);
-    console.log(sortRef.current);
   }, []);
 
   return (
