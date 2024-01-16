@@ -13,13 +13,7 @@ function Home({ items }) {
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
         {items.map((obj) => (
-          <PizzaBlock
-            key={obj.id}
-            {...obj}
-            //   price={obj.price}
-            //   imageUrl={obj.imageUrl}
-            //   name={obj.name}
-          />
+          <PizzaBlock key={obj.id} {...obj} />
         ))}
       </div>
     </div>
