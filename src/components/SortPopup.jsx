@@ -66,5 +66,5 @@ function SortPopup({ items }) {
   );
 }
 
-const mapStateToProps = ({ sortBy }) => ({ items: sortBy.sorts });
+const mapStateToProps = ({ sorting }) => ({ items: sorting.sorts });
 export default connect(mapStateToProps)(SortPopup);

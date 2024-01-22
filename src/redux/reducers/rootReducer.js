@@ -9,7 +9,7 @@ import sorts from "./sorts";
 const rootReducer = combineReducers({
   filters: filtersReducer,
   pizzas: pizzasReducer,
-  sortBy: sorts,
+  sorting: sorts,
 });
 
 export default rootReducer;
