@@ -10,6 +10,12 @@ const pizzas = (state = initialState, action) => {
       items: action.payload,
     };
   }
+  if (action.type === "CLEAR_PIZZAS") {
+    return {
+      ...state,
+      items: [],
+    };
+  }
   return state;
 };
 

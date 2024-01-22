@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 
-function Categories({ items }) {
+function Categories({ categories }) {
   const [activeItem, setActiveItem] = useState(null);
 
   return (
@@ -12,8 +13,8 @@ function Categories({ items }) {
         >
           Все
         </li>
-        {items &&
-          items.map((name, index) => (
+        {categories &&
+          categories.map((name, index) => (
             <li
               className={activeItem === index ? "active" : ""}
               onClick={() => setActiveItem(index)}
@@ -27,4 +28,8 @@ function Categories({ items }) {
   );
 }
 
-export default Categories;
+const mapStateToProps = ({ filters }) => ({
+  categories: filters.categories,
+});
+
+export default connect(mapStateToProps)(Categories);

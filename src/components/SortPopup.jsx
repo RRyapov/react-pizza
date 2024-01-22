@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
+import { connect } from "react-redux";
 
-export default function SortPopup({ items }) {
+function SortPopup({ items }) {
   const [visiblePopup, setVisiblePopup] = useState(false);
   const [activeItem, setActiveItem] = useState(0);
   const activeLabel = items[activeItem].name;
@@ -64,3 +65,6 @@ export default function SortPopup({ items }) {
     </div>
   );
 }
+
+const mapStateToProps = ({ sortBy }) => ({ items: sortBy.sorts });
+export default connect(mapStateToProps)(SortPopup);
