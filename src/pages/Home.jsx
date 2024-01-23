@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Categories, SortPopup, PizzaBlock } from "../components";
-import { connect, useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-function Home({ items }) {
+import { setCategory } from "../redux/actions/actionFilters";
+
+function Home() {
   const dispatch = useDispatch();
+  const items = useSelector(({ pizzas }) => pizzas.items);
 
+  const onSelectCategory = useCallback((index) => {
+    dispatch(setCategory(index));
+  }, []);
   return (
     <div className="container">
       <div className="content__top">
-        <Categories />
+        <Categories onClickItem={onSelectCategory} />
         <SortPopup />
       </div>
       <h2 className="content__title">Все пиццы</h2>
@@ -19,10 +25,4 @@ function Home({ items }) {
   );
 }
 
-const mapStateToProps = ({ pizzas }) => {
-  return {
-    items: pizzas.items,
-  };
-};
-
-export default connect(mapStateToProps)(Home);
+export default Home;

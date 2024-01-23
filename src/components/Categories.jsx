@@ -1,8 +1,15 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
+import filters from "../redux/reducers/filters";
 
-function Categories({ categories }) {
+const Categories = React.memo(function Categories({ onClickItem }) {
   const [activeItem, setActiveItem] = useState(null);
+  const categories = useSelector(({ filters }) => filters.categories);
+
+  const onSelectItem = (index) => {
+    setActiveItem(index);
+    onClickItem(index);
+  };
 
   return (
     <div className="categories">
@@ -17,7 +24,7 @@ function Categories({ categories }) {
           categories.map((name, index) => (
             <li
               className={activeItem === index ? "active" : ""}
-              onClick={() => setActiveItem(index)}
+              onClick={() => onSelectItem(index)}
               key={`${name}_${index}`}
             >
               {name}
@@ -26,10 +33,10 @@ function Categories({ categories }) {
       </ul>
     </div>
   );
-}
-
-const mapStateToProps = ({ filters }) => ({
-  categories: filters.categories,
 });
 
-export default connect(mapStateToProps)(Categories);
+// const mapStateToProps = ({ filters }) => ({
+//   categories: filters.categories,
+// });
+
+export default Categories;

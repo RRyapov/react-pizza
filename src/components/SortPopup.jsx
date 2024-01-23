@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
-function SortPopup({ items }) {
+const SortPopup = React.memo(function SortPopup() {
   const [visiblePopup, setVisiblePopup] = useState(false);
   const [activeItem, setActiveItem] = useState(0);
+
+  const items = useSelector(({ sorting }) => sorting.sorts);
+
   const activeLabel = items[activeItem].name;
 
   const onSelectItem = (index) => {
@@ -64,7 +67,6 @@ function SortPopup({ items }) {
       )}
     </div>
   );
-}
+});
 
-const mapStateToProps = ({ sorting }) => ({ items: sorting.sorts });
-export default connect(mapStateToProps)(SortPopup);
+export default SortPopup;

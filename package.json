@@ -7,6 +7,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "classnames": "^2.4.0",
+    "json-server": "^1.0.0-alpha.22",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-axios": "^2.0.6",
@@ -23,7 +24,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "compile:sass": "node-sass scss/style.scss css/style.css"
+    "compile:sass": "node-sass scss/style.scss css/style.css",
+    "server": "npx json-server --watch public/db.json --port=3001"
   },
   "eslintConfig": {
     "extends": [
