@@ -16,6 +16,7 @@
     "react-router-dom": "^6.21.2",
     "react-scripts": "5.0.1",
     "redux": "^5.0.1",
+    "redux-thunk": "^3.1.0",
     "sass": "^1.69.5",
     "web-vitals": "^2.1.4"
   },
@@ -24,8 +25,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "compile:sass": "node-sass scss/style.scss css/style.css",
-    "server": "npx json-server --watch public/db.json --port=3001"
+    "compile:sass": "node-sass scss/style.scss css/style.css"
   },
   "eslintConfig": {
     "extends": [
