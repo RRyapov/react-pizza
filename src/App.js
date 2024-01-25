@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
-import { fetchPizzas, setPizzas } from "./redux/actions/actionPizzas";
+import { fetchPizzas } from "./redux/actions/actionPizzas";
 import { useDispatch } from "react-redux";
 
 import { Header } from "./components";
@@ -9,7 +9,7 @@ import { Home, Cart } from "./pages";
 // import sorts from "./redux/reducers/sorts";
 
 function App() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // const storage = useSelector(({ pizzas, sorting }) => {
   //   return {
   //     items: pizzas.items,
@@ -17,13 +17,6 @@ function App() {
   //   };
   // });
 
-  useEffect(() => {
-    //   axios.get("http://localhost:3001/pizzas").then(({ data }) => {
-    //     // window.store.dispatch(setPizzas(data.pizzas));
-    //     dispatch(setPizzas(data));
-    //   });
-    dispatch(fetchPizzas());
-  }, []);
   return (
     <div className="wrapper">
       <Header />
