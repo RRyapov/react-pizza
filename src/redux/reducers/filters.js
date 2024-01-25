@@ -1,6 +1,6 @@
 const initialState = {
   categories: ["Мясные", "Вегетарианская", "Гриль", "Острые", "Закрытые"],
-  category: 0,
+  category: null,
 };
 // это редюсер фильтрации
 const filters = (state = initialState, action) => {

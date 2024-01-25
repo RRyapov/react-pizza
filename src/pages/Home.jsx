@@ -33,7 +33,10 @@ function Home() {
   return (
     <div className="container">
       <div className="content__top">
-        <Categories onClickItem={onSelectCategory} />
+        <Categories
+          activeCategory={category}
+          onClickCategory={onSelectCategory}
+        />
         <SortPopup />
       </div>
       <h2 className="content__title">Все пиццы</h2>

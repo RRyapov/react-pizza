@@ -1,30 +1,30 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import filters from "../redux/reducers/filters";
+import PropTypes from "prop-types";
 
-const Categories = React.memo(function Categories({ onClickItem }) {
-  const [activeItem, setActiveItem] = useState(null);
+// import filters from "../redux/reducers/filters";
+
+const Categories = React.memo(function Categories({
+  activeCategory,
+  onClickCategory,
+}) {
+  // const [activeItem, setActiveItem] = useState(null);
   const categories = useSelector(({ filters }) => filters.categories);
-
-  const onSelectItem = (index) => {
-    setActiveItem(index);
-    onClickItem(index);
-  };
 
   return (
     <div className="categories">
       <ul>
         <li
-          className={activeItem === null ? "active" : ""}
-          onClick={() => setActiveItem(null)}
+          className={activeCategory === null ? "active" : ""}
+          // onClick={() => setActiveItem(null)}
         >
           Все
         </li>
         {categories &&
           categories.map((name, index) => (
             <li
-              className={activeItem === index ? "active" : ""}
-              onClick={() => onSelectItem(index)}
+              className={activeCategory === index ? "active" : ""}
+              onClick={() => onClickCategory(index)}
               key={`${name}_${index}`}
             >
               {name}
@@ -35,8 +35,15 @@ const Categories = React.memo(function Categories({ onClickItem }) {
   );
 });
 
-// const mapStateToProps = ({ filters }) => ({
-//   categories: filters.categories,
-// });
+Categories.propTypes = {
+  activeCategory: PropTypes.number.isRequired,
+  items: PropTypes.arrayOf(PropTypes.object),
+  onClickCategory: PropTypes.func,
+};
+
+Categories.defaultProps = {
+  activeCategory: null,
+  items: [],
+};
 
 export default Categories;
