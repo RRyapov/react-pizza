@@ -40,12 +40,9 @@ function Home() {
     [dispatch]
   );
 
-  const onSelectSortType = useCallback(
-    (type) => {
-      dispatch(setSortBy(type));
-    },
-    [dispatch]
-  );
+  const onSelectSortType = useCallback((type) => {
+    dispatch(setSortBy(type));
+  }, []);
   return (
     <div className="container">
       <div className="content__top">
