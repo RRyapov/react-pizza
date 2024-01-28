@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import axios from "axios";
-import { fetchPizzas } from "./redux/actions/actionPizzas";
-import { useDispatch } from "react-redux";
+
+/*TODO нужно будет убрать закоменнченный код по всем вложенным компонентам*/
+// import axios from "axios";
+// import { fetchPizzas } from "./redux/actions/actionPizzas";
+// import { useDispatch } from "react-redux";
 
 import { Header } from "./components";
 import { Home, Cart } from "./pages";

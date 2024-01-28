@@ -1,3 +1,5 @@
+// npx json-server --watch public/db.json --port=3001
+
 import React, { useCallback, useEffect } from "react";
 import {
   Categories,
@@ -9,27 +11,41 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { fetchPizzas } from "../redux/actions/actionPizzas";
 
-import { setCategory } from "../redux/actions/actionFilters";
+import { setCategory, setSortBy } from "../redux/actions/actionFilters";
 
 function Home() {
   const dispatch = useDispatch();
-  const items = useSelector(({ pizzas }) => pizzas.items);
-  const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded);
-  const { category } = useSelector(({ filters }) => filters);
-  const sorts = useSelector(({ sorting }) => sorting);
-  console.log(category);
+  const { items, isLoaded, category, sorts, activeSortBy } = useSelector(
+    ({ pizzas, filters, sorting }) => ({
+      items: pizzas.items,
+      isLoaded: pizzas.isLoaded,
+      category: filters.category,
+      sorts: sorting.sorts,
+      activeSortBy: sorting.activeSortBy,
+    })
+  );
 
   useEffect(() => {
-    //   axios.get("http://localhost:3001/pizzas").then(({ data }) => {
+    //   axios.get("http://localhost:3001/pizzas/activeSort").then(({ data }) => {
     //     // window.store.dispatch(setPizzas(data.pizzas));
     //     dispatch(setPizzas(data));
     //   });
     dispatch(fetchPizzas());
   }, [category]);
 
-  const onSelectCategory = useCallback((index) => {
-    dispatch(setCategory(index));
-  }, []);
+  const onSelectCategory = useCallback(
+    (index) => {
+      dispatch(setCategory(index));
+    },
+    [dispatch]
+  );
+
+  const onSelectSortType = useCallback(
+    (type) => {
+      dispatch(setSortBy(type));
+    },
+    [dispatch]
+  );
   return (
     <div className="container">
       <div className="content__top">
@@ -37,7 +53,11 @@ function Home() {
           activeCategory={category}
           onClickCategory={onSelectCategory}
         />
-        <SortPopup />
+        <SortPopup
+          activeSortType={activeSortBy}
+          sorts={sorts}
+          onClickSortType={onSelectSortType}
+        />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
