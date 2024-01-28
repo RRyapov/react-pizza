@@ -30,8 +30,8 @@ function Home() {
     //     // window.store.dispatch(setPizzas(data.pizzas));
     //     dispatch(setPizzas(data));
     //   });
-    dispatch(fetchPizzas());
-  }, [category]);
+    dispatch(fetchPizzas(activeSortBy, category));
+  }, [category, activeSortBy]);
 
   const onSelectCategory = useCallback(
     (index) => {

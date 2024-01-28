@@ -17,6 +17,7 @@ const Categories = React.memo(function Categories({
         <li
           className={activeCategory === null ? "active" : ""}
           // onClick={() => setActiveItem(null)}
+          onClick={() => onClickCategory(null)}
         >
           Все
         </li>
@@ -36,7 +37,7 @@ const Categories = React.memo(function Categories({
 });
 
 Categories.propTypes = {
-  activeCategory: PropTypes.number.isRequired,
+  activeCategory: PropTypes.number,
   items: PropTypes.arrayOf(PropTypes.object),
   onClickCategory: PropTypes.func,
 };

@@ -1,9 +1,9 @@
 const popularType = { name: "популярности", type: "popular" };
-const alphabetType = { name: "алфавиту", type: "alphabet" };
+const nameType = { name: "алфавиту", type: "name" };
 const priceType = { name: "цене", type: "price" };
 
 const initialState = {
-  sorts: [popularType, alphabetType, priceType],
+  sorts: [popularType, nameType, priceType],
   activeSortBy: popularType.type,
 };
 // это редюсер фильтрации

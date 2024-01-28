@@ -29,7 +29,7 @@ function PizzaBlock({ name, imageUrl, price, types, sizes, isLoading }) {
         <ul>
           {availableTypes.map((type, index) => (
             <li
-              //   в этом нужно разобраться глубже. Пока непонятно, что откуда берется
+              /*TODO  в этом нужно разобраться глубже. Пока непонятно, что откуда берется */
               key={type}
               onClick={() => onSelectType(index)}
               className={classNames({
