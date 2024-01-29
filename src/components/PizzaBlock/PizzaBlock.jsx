@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
+import Button from "../Button";
 // import LoadingBlock from "./LoadingBlock";
 
 function PizzaBlock({ name, imageUrl, price, types, sizes, isLoading }) {
@@ -59,7 +60,7 @@ function PizzaBlock({ name, imageUrl, price, types, sizes, isLoading }) {
       </div>
       <div className="pizza-block__bottom">
         <div className="pizza-block__price">от {price} ₽</div>
-        <div className="button button--outline button--add">
+        <Button className="button--add" outline>
           <svg
             width="12"
             height="12"
@@ -74,7 +75,7 @@ function PizzaBlock({ name, imageUrl, price, types, sizes, isLoading }) {
           </svg>
           <span>Добавить</span>
           <i>2</i>
-        </div>
+        </Button>
       </div>
     </div>
   );
