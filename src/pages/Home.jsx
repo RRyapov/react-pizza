@@ -59,10 +59,19 @@ function Home() {
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
         {isLoaded
-          ? items.map((obj) => <PizzaBlock key={obj.id} {...obj} />)
+          ? items.map((obj) => (
+              <PizzaBlock
+                /*TODO нужно разобраться с багом: функция консоль выполянетсяпо всем элементам при загрузке (возможно, что-то с зависимостями на UseEffect)*/
+                onClickAddPizza={() => console.log(123)}
+                key={obj.id}
+                {...obj}
+              />
+            ))
           : Array(8)
               .fill(0)
-              .map((_, index) => <PizzaLoadingBlock key={index} />)}
+              .map((_, index) => (
+                <PizzaLoadingBlock className="pizza-block" key={index} />
+              ))}
       </div>
     </div>
   );
