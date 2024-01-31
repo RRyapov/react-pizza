@@ -62,7 +62,7 @@ function Home() {
           ? items.map((obj) => (
               <PizzaBlock
                 /*TODO нужно разобраться с багом: функция консоль выполянетсяпо всем элементам при загрузке (возможно, что-то с зависимостями на UseEffect)*/
-                onClickAddPizza={() => console.log(123)}
+                onClickAddPizza={(obj) => console.log(obj)}
                 key={obj.id}
                 {...obj}
               />
