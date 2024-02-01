@@ -10,21 +10,23 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 
 import { fetchPizzas } from "../redux/actions/actionPizzas";
-import { addPizzaToCart } from "../redux/actions/actionCart";
+// import { addPizzaToCart } from "../redux/actions/actionCart";
 
 import { setCategory, setSortBy } from "../redux/actions/actionFilters";
 
 function Home() {
   const dispatch = useDispatch();
-  const { items, isLoaded, category, sorts, activeSortBy } = useSelector(
-    ({ pizzas, filters, sorting }) => ({
+  const { items, isLoaded, category, sorts, activeSortBy, cartItems } =
+    useSelector(({ pizzas, filters, sorting, cart }) => ({
       items: pizzas.items,
       isLoaded: pizzas.isLoaded,
       category: filters.category,
       sorts: sorting.sorts,
       activeSortBy: sorting.activeSortBy,
-    })
-  );
+      cartItems: cart.items,
+    }));
+
+  console.log(cartItems);
 
   useEffect(() => {
     //   axios.get("http://localhost:3001/pizzas/activeSort").then(({ data }) => {
@@ -70,9 +72,9 @@ function Home() {
         {isLoaded
           ? items.map((obj) => (
               <PizzaBlock
-                /*TODO нужно разобраться с багом: функция консоль выполянетсяпо всем элементам при загрузке (возможно, что-то с зависимостями на UseEffect)*/
                 onClickAddPizza={handleAddPizzaToCart}
                 key={obj.id}
+                addedCount={cartItems[obj.id] && cartItems[obj.id].length}
                 {...obj}
               />
             ))
