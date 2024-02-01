@@ -10,6 +10,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 
 import { fetchPizzas } from "../redux/actions/actionPizzas";
+import { addPizzaToCart } from "../redux/actions/actionCart";
 
 import { setCategory, setSortBy } from "../redux/actions/actionFilters";
 
@@ -43,6 +44,14 @@ function Home() {
   const onSelectSortType = useCallback((type) => {
     dispatch(setSortBy(type));
   }, []);
+
+  const handleAddPizzaToCart = (obj) => {
+    dispatch({
+      type: "ADD_PIZZA_CART",
+      payload: obj,
+    });
+  };
+
   return (
     <div className="container">
       <div className="content__top">
@@ -62,7 +71,7 @@ function Home() {
           ? items.map((obj) => (
               <PizzaBlock
                 /*TODO нужно разобраться с багом: функция консоль выполянетсяпо всем элементам при загрузке (возможно, что-то с зависимостями на UseEffect)*/
-                onClickAddPizza={(obj) => console.log(obj)}
+                onClickAddPizza={handleAddPizzaToCart}
                 key={obj.id}
                 {...obj}
               />

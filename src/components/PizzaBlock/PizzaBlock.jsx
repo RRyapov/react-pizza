@@ -17,7 +17,7 @@ function PizzaBlock({
   const availableSizes = [26, 30, 40];
 
   const [activeType, setActiveType] = useState(types[0]);
-  const [activeSize, setActiveSize] = useState(sizes[0]);
+  const [activeSize, setActiveSize] = useState(0);
 
   // if (isLoading) {
   //   return <LoadingBlock />;
@@ -28,6 +28,18 @@ function PizzaBlock({
   };
   const onSelectSize = (index) => {
     setActiveSize(index);
+  };
+
+  const onAddPizza = () => {
+    const obj = {
+      id,
+      name,
+      imageUrl,
+      price,
+      size: availableSizes[activeSize],
+      type: availableTypes[activeType],
+    };
+    onClickAddPizza(obj);
   };
 
   return (
@@ -68,11 +80,7 @@ function PizzaBlock({
       </div>
       <div className="pizza-block__bottom">
         <div className="pizza-block__price">от {price} ₽</div>
-        <Button
-          className="button--add"
-          outline
-          onClick={() => onClickAddPizza({ id, name, imageUrl, price })}
-        >
+        <Button className="button--add" outline onClick={onAddPizza}>
           <svg
             width="12"
             height="12"

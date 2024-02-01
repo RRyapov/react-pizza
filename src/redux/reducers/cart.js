@@ -6,14 +6,14 @@ const initialState = {
 // это редюсер фильтрации
 const cart = (state = initialState, action) => {
   switch (action.type) {
-    case "'ADD_PIZZA-CART'":
+    case "ADD_PIZZA_CART":
       return {
         ...state,
         items: {
-          [action.payload.id]: [
-            ...state.items[action.payload.id],
-            action.payload,
-          ],
+          ...state.items,
+          [action.payload.id]: !state.items[action.payload.id]
+            ? [action.payload]
+            : [...state.items[action.payload.id], action.payload],
         },
       };
 
