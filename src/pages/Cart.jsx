@@ -1,7 +1,10 @@
 import React from "react";
-import CartItem from "../components/CartItem";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
+import CartItem from "../components/CartItem";
 import { clearCart } from "../redux/actions/actionCart";
+import cartEmptyImage from "../assets/img/empty-cart.png";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -157,10 +160,10 @@ function Cart() {
             <br />
             Для того, чтобы заказать пиццу, перейди на главную страницу.
           </p>
-          <img src="/img/empty-cart.png" alt="Empty cart" />
-          <a href="/" className="button button--black">
+          <img src={cartEmptyImage} alt="Empty cart" />
+          <Link to="/" className="button button--black">
             <span>Вернуться назад</span>
-          </a>
+          </Link>
         </div>
       )}
     </div>
