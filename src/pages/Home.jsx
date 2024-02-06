@@ -10,7 +10,6 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 
 import { fetchPizzas } from "../redux/actions/actionPizzas";
-// import { addPizzaToCart } from "../redux/actions/actionCart";
 
 import { setCategory, setSortBy } from "../redux/actions/actionFilters";
 
@@ -29,10 +28,6 @@ function Home() {
   console.log(cartItems);
 
   useEffect(() => {
-    //   axios.get("http://localhost:3001/pizzas/activeSort").then(({ data }) => {
-    //     // window.store.dispatch(setPizzas(data.pizzas));
-    //     dispatch(setPizzas(data));
-    //   });
     dispatch(fetchPizzas(activeSortBy, category));
   }, [category, activeSortBy]);
 

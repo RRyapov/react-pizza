@@ -2,13 +2,10 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-// import filters from "../redux/reducers/filters";
-
 const Categories = React.memo(function Categories({
   activeCategory,
   onClickCategory,
 }) {
-  // const [activeItem, setActiveItem] = useState(null);
   const categories = useSelector(({ filters }) => filters.categories);
 
   return (
@@ -16,7 +13,6 @@ const Categories = React.memo(function Categories({
       <ul>
         <li
           className={activeCategory === null ? "active" : ""}
-          // onClick={() => setActiveItem(null)}
           onClick={() => onClickCategory(null)}
         >
           Все

@@ -128,13 +128,11 @@ function Cart() {
                 size={obj.size}
                 totalPrice={items[obj.id].totalPrice}
                 totalCount={items[obj.id].items.length}
-                // cartAddedPizzaPrice={items[obj.id].items.totalPrice}
                 onRemove={onRemoveItem}
                 onMinus={onMinusItem}
                 onPlus={onPlusItem}
               />
             ))}
-            {/* <CartItem name="Пепперони Фреш с перцем" type="тонкое" size={26} /> */}
           </div>
           <div className="cart__bottom">
             <div className="cart__bottom-details">

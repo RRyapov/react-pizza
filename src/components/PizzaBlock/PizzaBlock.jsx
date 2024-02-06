@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import Button from "../Button";
-// import LoadingBlock from "./LoadingBlock";
 
 function PizzaBlock({
   id,
@@ -19,10 +18,6 @@ function PizzaBlock({
 
   const [activeType, setActiveType] = useState(types[0]);
   const [activeSize, setActiveSize] = useState(0);
-
-  // if (isLoading) {
-  //   return <LoadingBlock />;
-  // }
 
   const onSelectType = (index) => {
     setActiveType(index);

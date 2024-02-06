@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-// import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
-// import { type } from "@testing-library/user-event/dist/type";
 
 const SortPopup = React.memo(function SortPopup({
   activeSortType,
@@ -9,7 +7,6 @@ const SortPopup = React.memo(function SortPopup({
   onClickSortType,
 }) {
   const [visiblePopup, setVisiblePopup] = useState(false);
-  /* Получение активного элемента сортировки */
   const activeLabelName = sorts.find(
     ({ type }) => type === activeSortType
   ).name;

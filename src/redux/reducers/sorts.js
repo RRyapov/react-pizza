@@ -6,7 +6,6 @@ const initialState = {
   sorts: [popularType, nameType, priceType],
   activeSortBy: popularType.type,
 };
-// это редюсер фильтрации
 const sorts = (state = initialState, action) => {
   switch (action.type) {
     case "SET_SORT_BY": {

@@ -2,7 +2,6 @@ const initialState = {
   items: [],
   isLoaded: false,
 };
-// это редюсер фильтрации
 const pizzas = (state = initialState, action) => {
   switch (action.type) {
     case "SET_PIZZAS":
