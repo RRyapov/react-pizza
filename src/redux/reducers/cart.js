@@ -170,6 +170,84 @@ const cart = (state = initialState, action) => {
         //   state.items[action.payload].totalPrice + pizzaAddedToCartPrice,
       };
     }
+
+    case "MINUS_CART_ITEM": {
+      // const newItems = {
+      //   ...state.items[action.payload].items,
+      // };
+      // console.log(
+      //   "Выводимые элементы" +
+      //     state.items[action.payload].items.reduce(
+      //       (sum, obj) => obj.price + sum,
+      //       0
+      //     )
+      // );
+
+      // let similarItems = {
+      //   [action.payload.items]
+      // }
+
+      const pizzaAddedToCartPrice = state.items[action.payload].items[0].price;
+      // const pizzaAddedToCartSum =
+      //   state.items[action.payload].totalPrice - pizzaAddedToCartPrice;
+      // console.log(pizzaAddedToCartSum);
+
+      // const priceItems = {
+      //   ...state.items[action.payload].items,
+      //   [action.payload]: {
+      //     items: newItems,
+      //     totalPrice: state.items[action.payload].items.reduce(
+      //       (sum, obj) => obj.price + sum,
+      //       0
+      //     ),
+      //   },
+      // };
+
+      // const similarItemsMinusCount = () =>
+      //   state.totalCount > 0 ? state.totalCount - 1 : state.totalCount;
+
+      const checkArrLengthToPopElement = () =>
+        state.items[action.payload].items.length > 0
+          ? state.items[action.payload].items.splice(1, 1)
+          : 0;
+
+      const checkItemTotalPrice = () =>
+        state.items[action.payload].items.length > 1
+          ? state.items[action.payload].totalPrice -
+            state.items[action.payload].items[0].price
+          : state.items[action.payload].items[0].price;
+      // console.log(Object.entries(state.items));
+      // const checkArrPriceToPopElement = (arr) => ;
+
+      // const allPizzasCountAfterMinus = Object.values(state.items).map(
+      //   (obj, index) => obj.items[index].items
+      // );
+      // console.log(allPizzasCountAfterMinus);
+      const objectToArray = Object.values(state.items).reduce(
+        (sum, elem) => elem.items.length + sum,
+        0
+      );
+
+      console.log(objectToArray);
+      // const allPizzas = [].concat.apply([], ...state.items);
+
+      return {
+        ...state,
+        items: {
+          ...state.items,
+          [action.payload]: {
+            ...state.items[action.payload],
+            totalPrice: checkItemTotalPrice(),
+          },
+        },
+        totalPrice: state.totalPrice - pizzaAddedToCartPrice,
+        totalCount: objectToArray - 1,
+        cartAddedPizzaCount: checkArrLengthToPopElement(),
+        // [state.items[action.payload].totalPrice]:
+        //   state.items[action.payload].totalPrice + pizzaAddedToCartPrice,
+      };
+    }
+
     default:
       return state;
   }

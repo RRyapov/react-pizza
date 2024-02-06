@@ -14,9 +14,7 @@ import cartEmptyImage from "../assets/img/empty-cart.png";
 function Cart() {
   const dispatch = useDispatch();
 
-  const { items, totalCount, totalPrice, cartAddedPizzaCount } = useSelector(
-    ({ cart }) => cart
-  );
+  const { items, totalCount, totalPrice } = useSelector(({ cart }) => cart);
 
   const addedPizzas = Object.keys(items).map((key) => {
     return items[key].items[0];
